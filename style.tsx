@@ -31,3 +31,20 @@ export const SubTitle = styled.Text`
      margin-top: 10%;
 
 `
+
+export const Card = styled.View`
+     width: 100px;
+     height: 20px;
+     background-color: #ffffff;
+`
+
+export const NameUser = styled.Text`
+     font-size: 10px;
+     color: #FFFFFF;
+
+`
+
+export const List = styled.FlatList`
+     
+
+`

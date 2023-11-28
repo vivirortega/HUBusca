@@ -4,6 +4,7 @@
     "slug": "hubusca",
     "version": "1.0.0",
     "orientation": "portrait",
+    "sourceExts": [ "js", "json", "ts", "tsx", "jsx", "vue"],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

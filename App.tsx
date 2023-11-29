@@ -25,8 +25,8 @@ const App: React.FC = () => {
       )
 
       if (response.status === 200) {
-        setUserData(response.data);
-        console.log(response.data)
+        setUserData([response.data]);
+        console.log(response.data.name)
       } else {
         console.error('Erro na requisição:', response.status)
       }

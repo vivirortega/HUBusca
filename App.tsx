@@ -1,7 +1,20 @@
 import { StatusBar } from 'expo-status-bar'
-import { Card, Container, GetUser, List, NameUser, SubTitle, Title } from './style'
-import {View, Text, FlatList} from 'react-native'
+import {
+  Card,
+  Container,
+  GetUser,
+  UserIcon,
+  NameUser,
+  SubTitle,
+  Title,
+  UserLocalization,
+  UserLogin,
+  UserInfo,
+  UserBio, Test, Place
+} from './style'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import { useFonts, Roboto_700Bold } from '@expo-google-fonts/roboto'
+import { MaterialIcons } from '@expo/vector-icons'; 
 import React, { useState } from 'react'
 import axios from 'axios'
 
@@ -11,6 +24,7 @@ interface UserData {
   name: string
   avatar_url: string
   location?: string
+  bio: string
 }
 
 const App: React.FC = () => {
@@ -25,7 +39,7 @@ const App: React.FC = () => {
       )
 
       if (response.status === 200) {
-        setUserData([response.data]);
+        setUserData([response.data])
         console.log(response.data.name)
       } else {
         console.error('Erro na requisição:', response.status)
@@ -36,22 +50,33 @@ const App: React.FC = () => {
   }
 
   const handleSearch = () => {
-    searchUser();
-  };
+    searchUser()
+    setUsername('');
 
+  }
 
   if (!fontsLoaded) {
     return null
   }
 
-  const renderItem = ({item}: {item: UserData}) => {
+  const renderItem = ({ item }: { item: UserData }) => {
     return (
       <Card>
-        <NameUser>{item.name}</NameUser>
-        <Text style={{fontSize: 14}}>{item.login}</Text>
+        <UserInfo>
+          <UserIcon source={{ uri: item.avatar_url }} />
+          <Test>
+          <NameUser>{item.name}</NameUser>
+          <UserLogin>@{item.login}</UserLogin>
+          </Test>
+        </UserInfo>
+        <Place>
+        <MaterialIcons name="place" size={24} color="black" />
+        <UserLocalization>{item.location}</UserLocalization>
+        </Place>
+        <UserBio>{item.bio}</UserBio>
       </Card>
-    );
-  };
+    )
+  }
 
   return (
     <Container>
@@ -68,8 +93,8 @@ const App: React.FC = () => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
       />
+      
       <StatusBar style="dark" />
-
     </Container>
   )
 }

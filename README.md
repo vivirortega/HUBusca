@@ -4,4 +4,4 @@
 </div>
 
 <h2>Prototipagem</h2>
-🔗 <a href="https://www.figma.com/file/nUFkybdVpoQBH9sRvpnQXT/Figma-basics?type=design&node-id=602%3A37&mode=design&t=Cq0Zh72RKmR3aFoe-1">Link do Figma</url> </p>
+🔗 <a _blank href="https://www.figma.com/file/nUFkybdVpoQBH9sRvpnQXT/Figma-basics?type=design&node-id=602%3A37&mode=design&t=Cq0Zh72RKmR3aFoe-1">Link do Figma</url> </p>

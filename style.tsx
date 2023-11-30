@@ -17,7 +17,6 @@ export const GetUser = styled.TextInput`
   width: 80%;
   margin: 5%;
   background-color: #d9d9d9;
-  text-align: start;
   padding: 10px;
 `
 

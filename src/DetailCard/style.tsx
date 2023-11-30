@@ -8,6 +8,7 @@ export const CardDetailed = styled.View`
   border-radius: 10px;
   display: flex;
   margin-top: 20px;
+
 `
 
 export const NameUser = styled.Text`
@@ -23,7 +24,6 @@ export const ImageUser = styled.Image`
   width: 70px;
   height: 70px;
   border-radius: 100px;
-  margin-top: 20px;
   margin-left: 20px;
 `
 
@@ -31,6 +31,7 @@ export const DivInfo = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 25px;
 `
 
 export const DivUserInfo = styled.View`
@@ -60,4 +61,54 @@ export const UserFollowers = styled.Text`
 export const UserRepos = styled.Text`
     font-size: 15px;
 
+`
+
+export const UserDetails = styled.View`
+margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+`
+
+export const BoldText = styled.Text`
+    font-weight: 500;
+`
+
+export const RepoName = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+
+`
+export const ReposCard = styled.View`
+  width: 250px;
+  height: 100px;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin-top: 7px;
+
+`
+
+export const Column = styled.View`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`
+
+export const RepoLanguage = styled.Text`
+  color: green;
+
+`
+
+export const RepoDescription = styled.Text`
+  color: #687178;
+
+`
+
+export const RepoUpdate = styled.Text`
+  
+`
+export const RepoCreated = styled.Text`
+  
 `

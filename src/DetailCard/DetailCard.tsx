@@ -1,5 +1,7 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, FlatList, TouchableOpacity, Linking } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'
+import axios from 'axios'
 import {
   CardDetailed,
   NameUser,
@@ -11,8 +13,26 @@ import {
   Place,
   UserFollowers,
   UserRepos,
+  UserDetails,
+  BoldText,
+  RepoName,
+  ReposCard,
+  Column,
+  RepoLanguage,
+  RepoDescription,
+  RepoCreated,
+  RepoUpdate,
 } from './style'
-import { MaterialIcons } from '@expo/vector-icons'
+
+interface RepoData {
+  id: number
+  name: string
+  html_url: string
+  description?: string
+  language: string
+  created_at: string
+  updated_at: string
+}
 
 interface DetailedCardProps {
   user: {
@@ -29,6 +49,29 @@ interface DetailedCardProps {
 }
 
 const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
+  const [repos, setRepos] = useState<RepoData[]>([])
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.github.com/users/${user.login}/repos`,
+        )
+
+        if (response.status === 200) {
+          setRepos(response.data)
+          console.log(response.data)
+        } else {
+          console.error('Erro na requisição:', response.status)
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error)
+      }
+    }
+
+    fetchRepos()
+  }, [user.login])
+
   return (
     <CardDetailed>
       <DivInfo>
@@ -42,9 +85,38 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
           </Place>
         </DivUserInfo>
       </DivInfo>
-
-      <UserFollowers>Followers: {user.followers}</UserFollowers>
-      <UserRepos>Repositories: {user.public_repos}</UserRepos>
+      <UserDetails>
+        <Column>
+          <UserFollowers>
+            <BoldText>Followers:</BoldText> {user.followers}
+          </UserFollowers>
+          <UserRepos>
+            <BoldText>Repositories:</BoldText> {user.public_repos}
+          </UserRepos>
+          <UserRepos>
+            <BoldText>All {user.name} repositories:</BoldText>
+            <FlatList
+              data={repos}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <ReposCard key={item.id}>
+                  <RepoName
+                    onPress={() => {
+                      Linking.openURL(item.html_url)
+                    }}
+                  >
+                    {item.name}
+                  </RepoName>
+                  <RepoLanguage>{item.language}</RepoLanguage>
+                  <RepoDescription>{item.description}</RepoDescription>
+                  <RepoCreated>{item.created_at}</RepoCreated>
+                  <RepoUpdate>{item.updated_at}</RepoUpdate>
+                </ReposCard>
+              )}
+            />
+          </UserRepos>
+        </Column>
+      </UserDetails>
     </CardDetailed>
   )
 }

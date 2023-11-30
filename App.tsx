@@ -40,7 +40,6 @@ const App: React.FC = () => {
   const [username, setUsername] = useState<string>('')
   const [userData, setUserData] = useState<UserData[]>([])
   const [openDetails, setOpenDetails] = useState<boolean>(false);
-  const [showSearch, setShowSearch] = useState<boolean>(true);
 
 
   const searchUser = async () => {
@@ -51,7 +50,6 @@ const App: React.FC = () => {
 
       if (response.status === 200) {
         setUserData([response.data])
-        console.log(response.data)
       } else {
         console.error('Erro na requisição:', response.status)
       }
@@ -113,7 +111,6 @@ const App: React.FC = () => {
         data={userData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
-        style={{ display: showSearch ? 'flex' : 'none' }}
 
       />
 

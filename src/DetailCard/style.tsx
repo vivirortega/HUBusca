@@ -8,7 +8,7 @@ export const CardDetailed = styled.View`
   border-radius: 10px;
   display: flex;
   margin-top: 20px;
-
+  min-height: 430px; 
 `
 
 export const NameUser = styled.Text`
@@ -70,6 +70,8 @@ margin-top: 10px;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+      max-height: 300px;
+
 `
 
 export const BoldText = styled.Text`
@@ -85,7 +87,6 @@ export const RepoName = styled.Text`
 `
 export const ReposCard = styled.View`
   width: 250px;
-  height: 100px;
   background-color: #D9D9D9;
   border-radius: 10px;
   margin-top: 7px;
@@ -114,4 +115,11 @@ export const RepoUpdate = styled.Text`
 `
 export const RepoCreated = styled.Text`
   
+`
+
+export const DivRow = styled.View`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 5px;
 `

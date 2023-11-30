@@ -22,7 +22,7 @@ import {
   RepoLanguage,
   RepoDescription,
   RepoCreated,
-  RepoUpdate,
+  RepoUpdate, DivRow
 } from './style'
 
 interface RepoData {
@@ -93,14 +93,15 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
       </DivInfo>
       <UserDetails>
         <Column>
+        <DivRow>
           <UserFollowers>
-            <BoldText>Followers:</BoldText> {user.followers}
+            <BoldText>Seguidores:</BoldText> {user.followers}
           </UserFollowers>
           <UserRepos>
-            <BoldText>Repositories:</BoldText> {user.public_repos}
+            <BoldText>Repositórios:</BoldText> {user.public_repos}
           </UserRepos>
-          <UserRepos>
-            <BoldText>All {user.name} repositories:</BoldText>
+          </DivRow>
+      
             <FlatList
               data={repos}
               keyExtractor={(item) => item.id.toString()}
@@ -120,7 +121,6 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
                 </ReposCard>
               )}
             />
-          </UserRepos>
         </Column>
       </UserDetails>
     </CardDetailed>

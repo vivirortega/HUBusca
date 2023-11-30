@@ -22,7 +22,7 @@ import {
   RepoLanguage,
   RepoDescription,
   RepoCreated,
-  RepoUpdate, DivRow
+  RepoUpdate, DivRow, DivDates
 } from './style'
 
 interface RepoData {
@@ -116,8 +116,10 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
                   </RepoName>
                   <RepoLanguage>{item.language}</RepoLanguage>
                   <RepoDescription>{item.description}</RepoDescription>
-                  <RepoCreated>{formatDate(item.created_at)}</RepoCreated>
-                  <RepoUpdate>{formatDate(item.updated_at)}</RepoUpdate>
+                  <DivDates>
+                  <RepoCreated>Criado em:{formatDate(item.created_at)}</RepoCreated>
+                  <RepoUpdate>Último Update:{formatDate(item.updated_at)}</RepoUpdate>
+                  </DivDates>
                 </ReposCard>
               )}
             />

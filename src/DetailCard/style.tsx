@@ -79,7 +79,7 @@ export const BoldText = styled.Text`
 `
 
 export const RepoName = styled.Text`
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   margin-top: 10px;
   margin-left: 10px;
@@ -101,20 +101,24 @@ export const Column = styled.View`
 
 export const RepoLanguage = styled.Text`
   color: green;
+  font-size: 13px;
   margin-left: 10px;
 
 `
 
 export const RepoDescription = styled.Text`
   color: #687178;
+  margin-left: 10px;
 
 `
 
 export const RepoUpdate = styled.Text`
-  
+  font-size: 10px;
+  font-weight: bold;
 `
 export const RepoCreated = styled.Text`
-  
+  font-size: 10px;
+  font-weight: bold;
 `
 
 export const DivRow = styled.View`
@@ -122,4 +126,13 @@ export const DivRow = styled.View`
   flex-direction: row;
   gap: 10px;
   margin-top: 5px;
+`
+
+export const DivDates = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+  margin: 5px;
+
 `

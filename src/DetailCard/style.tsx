@@ -79,6 +79,8 @@ export const BoldText = styled.Text`
 export const RepoName = styled.Text`
   font-size: 15px;
   font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
 
 `
 export const ReposCard = styled.View`
@@ -98,6 +100,7 @@ export const Column = styled.View`
 
 export const RepoLanguage = styled.Text`
   color: green;
+  margin-left: 10px;
 
 `
 

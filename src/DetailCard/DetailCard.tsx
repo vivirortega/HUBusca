@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { View, FlatList, TouchableOpacity, Linking } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import axios from 'axios'
+import { format } from 'date-fns';
 import {
   CardDetailed,
   NameUser,
@@ -72,6 +73,11 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
     fetchRepos()
   }, [user.login])
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return format(date, 'dd/MM/yyyy'); 
+  };
+
   return (
     <CardDetailed>
       <DivInfo>
@@ -109,8 +115,8 @@ const DetailedCard: React.FC<DetailedCardProps> = ({ user, onClose }) => {
                   </RepoName>
                   <RepoLanguage>{item.language}</RepoLanguage>
                   <RepoDescription>{item.description}</RepoDescription>
-                  <RepoCreated>{item.created_at}</RepoCreated>
-                  <RepoUpdate>{item.updated_at}</RepoUpdate>
+                  <RepoCreated>{formatDate(item.created_at)}</RepoCreated>
+                  <RepoUpdate>{formatDate(item.updated_at)}</RepoUpdate>
                 </ReposCard>
               )}
             />
